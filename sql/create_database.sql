@@ -5,5 +5,5 @@
 # Datenbank, User erzeugen & Rechte verteilen
 
 CREATE DATABASE verein;
-CREATE USER manager WITH SUPERUSER;
+CREATE USER manager WITH PASSWORD 'iderfrein';
 GRANT ALL ON DATABASE verein TO manager;
