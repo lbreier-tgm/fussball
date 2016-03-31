@@ -2,9 +2,11 @@
 # BREIER - PROTOKOLL UND BEFEHLE - FUSSBALL
 # ==========================================
 
+CREATE SEQUENCE pid START WITH 10000 INCREMENT BY 2;
+
 #Tabellen kreieren
 CREATE TABLE person (
-  persnr INTEGER PRIMARY KEY,
+  persnr SERIAL PRIMARY KEY,
   vname VARCHAR(30),
   nname VARCHAR(30),
   geschlecht VARCHAR(1),
@@ -62,3 +64,4 @@ CREATE TABLE mannschaftspieler (
   PRIMARY KEY(persnr),
   FOREIGN KEY(persnr) REFERENCES spieler
 );
+
