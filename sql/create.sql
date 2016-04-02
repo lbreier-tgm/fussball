@@ -17,7 +17,7 @@ CREATE TABLE angestellter(
   persnr SERIAL PRIMARY KEY REFERENCES person,
   ueberstunden NUMERIC(3,0) NOT NULL,
   gehalt NUMERIC(8,2) NOT NULL,
-  e_mail VARCHAR(50) NOT NULL,
+  e_mail VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE mitglied (
@@ -26,7 +26,7 @@ CREATE TABLE mitglied (
 );
 
 CREATE TABLE spieler (
-  persnr SERIAL PRIMARY KEY REFERENCES person,
+  persnr INTEGER PRIMARY KEY REFERENCES person,
   position VARCHAR(20) NOT NULL,
   gehalt NUMERIC(8,2) NOT NULL,
   von DATE NOT NULL,
@@ -44,8 +44,7 @@ CREATE TABLE mannschaft (
   bezeichnung VARCHAR(40) PRIMARY KEY,
   naechstes_spiel DATE NOT NULL,
   klasse VARCHAR(20),
-  kapitaen INTEGER NOT NULL,
-  FOREIGN KEY(persnr) REFERENCES spieler
+  kapitaen INTEGER REFERENCES spieler.persnr
 );
 
 
@@ -66,7 +65,7 @@ CREATE TABLE mannschaftspieler (
 );
 
 CREATE TABLE standort (
-  sid INTEGER PRIMARY KEY,
+  sid INTEGER PRIMARY KEY CHECK (sid > 0),
   land VARCHAR(30) NOT NULL,
   plz VARCHAR(10) NOT NULL,
   ort VARCHAR(30) NOT NULL,

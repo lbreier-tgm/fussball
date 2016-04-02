@@ -45,5 +45,33 @@ Für die geraden Zahlen helfen wir uns mit einem Trick, in dem wir mit Hilfe von 
 
 \item Für das ''sid'' - Attribut sollen beliebige positive Zahlen (d.h. 1,2, ...) vergeben werden.\newline
 Falls zwischen 2 Tabellen zyklische FOREIGN KEY Beziehungen herrschen,
-dann sind diese FOREIGN KEYs auf eine Weise zu definieren, dass es möglich ist, immer weitere Datensätze mittels INSERT in diese Tabellen einzufügen.
+dann sind diese FOREIGN KEYs auf eine Weise zu definieren, dass es möglich ist, immer weitere Datensätze mittels INSERT in diese Tabellen einzufügen.\newline
+Die positiven Zahlen erhalten wir mittels einer \textbf{CHECK} - Constraint.\newline
+\lstinputlisting[language=SQL, firstline=68, lastline=68]{../../sql/create.sql}
+
 \end{itemize}
+
+\subsection{INSERT-Befehle}
+Schreiben Sie INSERT-Befehle, um Testdaten für die kreierten Tabellen einzurichten. \newline
+Jede Tabelle soll zumindest 10.0000 Zeilen enthalten. \newline
+Sie dürfen die Wahl der Namen, Bezeichnungen, etc. so einfach wie möglich gestalten, d.h.: Sie müssen nicht "real existierende" Fußballer-Namen, Länder, Städte, etc. wählen. \newline
+Stattdessen können Sie ruhig 'Spieler 1', 'Spieler 2', 'Land 1', 'Land 2', 'Stadt 1', 'Stadt 2', etc. verwenden. \newline
+Sie können für die Erstellung der Testdaten auch entsprechende Generatoren verwenden! \newline
+
+
+\subsection{DROP-Befehle}
+Schreiben Sie die nötigen DROP-Befehle, um alle kreierten Datenbankobjekte wieder zu löschen.
+z.B
+\lstinputlisting[language=SQL, firstline=2, lastline=2]{../../sql/drop.sql}
+
+\section{Problemlösungen mittels SQL}
+\subsection{Fanclub-Betreuung}
+Wählen Sie "per Hand" die Personalnummer eines Angestellten aus Ihren Testdaten aus.\newline
+Schreiben Sie eine SQL-Anfrage, die jene Fan-Clubs ermittelt, die dieser Angestellte im Moment nicht betreut.\newline
+Geben Sie zu jedem derartigen Fan-Club die Standort-ID und den Namen des Fan-Clubs aus.\newline
+Bemerkung: Ein Fan-Club wird von einem Angestellten im Moment nicht betreut,\newline
+wenn entweder der Angestellte diesen Fan-Club überhaupt nie betreut hat\newline
+oder wenn das heutige Datum (= sysdate) außerhalb des Betreuungszeitraums liegt.\newline
+Vergessen Sie nicht, jene Fan-Clubs zu berücksichtigen,\newline
+die von überhaupt keinem Angestellten betreut werden (dieser Fall sollte zwar laut Datenmodell nicht vorkommen.\newline
+Die Einhaltung dieser Bedingung wird aber vermutlich vom Datenbanksystem nicht überprüft)!\newline
