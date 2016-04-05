@@ -92,9 +92,16 @@ CREATE TABLE betreuung (
   ende DATE NOT NULL
 )
 
-CREATE TABLE spieler (
-  datum DATE PRIMARY KEY
-  mannschaft FOREIGN KEY REFERENCES mannschaft.bezeichnung
-  gegner VARCHAR(30)
+CREATE TABLE spiel (
+  datum DATE PRIMARY KEY,
+  mannschaft FOREIGN KEY REFERENCES mannschaft.bezeichnung,
+  gegner VARCHAR(30),
   ergebnis VARCHAR(3)
+)
+
+CREATE TABLE einsatz (
+  datum DATE PRIMARY KEY REFERENCES spiel.datum,
+  mannschaft VARCHAR(30) PRIMARY KEY REFERENCES spiel.mannschaft,
+  persnr INTEGER PRIMARY KEY REFERENCES spieler.persnr,
+  dauer NUMERIC(2,0)
 )
