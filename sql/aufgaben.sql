@@ -11,28 +11,38 @@
 # Bemerkung: Ein Fan-Club wird von einem Angestellten im Moment nicht betreut,
 # wenn entweder der Angestellte diesen Fan-Club überhaupt nie betreut hat
 # oder wenn das heutige Datum (= sysdate) außerhalb des Betreuungszeitraums liegt.
-
-SELECT name, sid
-FROM betreuung
-WHERE persnr != 10000 AND
-IS NOT NULL
-OR anfang > sysdate
-OR ende < sysdate;
-
 # Vergessen Sie nicht, jene Fan-Clubs zu berücksichtigen,
 # die von überhaupt keinem Angestellten betreut werden (dieser Fall sollte zwar laut Datenmodell nicht vorkommen.
 # Die Einhaltung dieser Bedingung wird aber vermutlich vom Datenbanksystem nicht überprüft)!
 
+SELECT name, sid
+FROM betreuung
+WHERE persnr != 10000
+AND persnr IS NOT NULL
+OR anfang > sysdate
+OR ende < sysdate;
 
-# S2.) (Die eifrigsten Angestellten) Schreiben Sie eine SQL-Anfrage, die den Nachnamen und die Personalnummer jener Angestellten ausgibt, die im Moment sämtliche Fan-Clubs betreuen. Ordnen Sie die Nachnamen alphabetisch.
+# S2.) (Die eifrigsten Angestellten) Schreiben Sie eine SQL-Anfrage, die den Nachnamen und
+# die Personalnummer jener Angestellten ausgibt, die im Moment sämtliche Fan-Clubs betreuen. Ordnen Sie die Nachnamen alphabetisch.
 # Bemerkung: Passen Sie die Testdaten so an, dass diese Anfrage zumindest zwei Angestellte liefert.
+
+(SELECT nname, persnr
+ORDER BY nname DESC
+FROM person
+INNER JOIN angestellter ON angestellter.persnr = person.persnr)
+LEFT OUTER JOIN betreuung ON person.persnr = fanclub.persnr;
+
 
 # S3.) (Spielereinsätze) Geben Sie für alle Spiele des Jahres 2015 jeweils alle Spieler und die Dauer ihres Einsatzes aus, d.h.: Gesucht sind alle Tupel (mannschaft, datum, vorname, nachname, dauer), mit folgender Eigenschaft:
 #        "mannschaft" ist die Bezeichnung der Mannschaft, die gespielt hat.
 #        "datum" ist das Datum, an dem das Spiel stattfand.
 #        "vorname" und "nachname" beziehen sich auf einen Spieler, der bei diesem Spiel zum Einsatz kam.
 #        "dauer" gibt die Dauer des Einsatzes (in Minuten) dieses Spielers bei diesem Spiel an.
-#
+SELECT *
+FROM 
+WHERE
+
+
 # S4.) (Spieler-Ranking) Geben Sie für jeden Spieler den Vornamen und Nachnamen sowie die Gesamtdauer ("gesamtdauer") der von ihm bei Spielen im Jahr 2015 geleisteten Einsätze aus. Vergessen Sie nicht, jene Spieler des Vereins zu berücksichtigen, die im Jahr 2015 bei keinem einzigen Spiel mitgespielt haben (d.h. gesamtdauer = 0). Ordnen Sie die Ausgabe in absteigender Gesamtdauer. Bei Gleichheit der Gesamtdauer sollen die Spieler in alphabetischer Reihenfolge (zuerst des Nachnamen, dann des Vornamen) sortiert werden.
 
 # S5.) (Der fleißigste Spieler) Geben Sie den Vornamen und Nachnamen jenes Spielers aus, von dem die unter b) berechnete Gesamtdauer am größten ist, d.h.: dieser Spieler ist bei Spielen im Jahr 2015 insgesamt am längsten im Einsatz gewesen. Falls sich mehrere Spieler den ersten Platz teilen (d.h. sie kommen auf die gleiche Gesamtdauer), dann sollen diese in alphabetischer Reihenfolge (zuerst des Nachnamen, dann des Vornamen) geordnet werden. Der Fall, dass im Jahr 2015 überhaupt kein Spiel stattfand, darf ignoriert werden.

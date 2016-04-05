@@ -91,3 +91,10 @@ CREATE TABLE betreuung (
   anfang DATE NOT NULL,
   ende DATE NOT NULL
 )
+
+CREATE TABLE spieler (
+  datum DATE PRIMARY KEY
+  mannschaft FOREIGN KEY REFERENCES mannschaft.bezeichnung
+  gegner VARCHAR(30)
+  ergebnis VARCHAR(3)
+)
