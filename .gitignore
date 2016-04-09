@@ -37,3 +37,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/.qmake.stash
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/main.o
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/Makefile
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/moc_mainwindow.cpp
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/moc_mainwindow.o
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/ui_mainwindow.h
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/ichVerwalte.app/Contents/Info.plist
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/ichVerwalte.app/Contents/PkgInfo
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/ichVerwalte.app/Contents/MacOS/ichVerwalte
+qt/build-ichVerwalte-Desktop_Qt_5_6_0_clang_64bit-Debug/ichVerwalte.app/Contents/Resources/empty.lproj

@@ -1,0 +1,12 @@
+DROP SEQUENCE pid;
+DROP TABLE person;
+DROP TABLE angestellter;
+DROP TABLE mitglied;
+DROP TABLE trainer;
+DROP TABLE mannschaft;
+DROP TABLE ist_trainer_von;
+DROP TABLE mannschaftsspieler;
+DROP TABLE standort;
+DROP TABLE fanclub;
+DROP TABLE ist_obmann;
+DROP TABLE betreuung;

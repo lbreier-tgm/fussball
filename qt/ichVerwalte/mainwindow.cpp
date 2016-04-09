@@ -31,12 +31,12 @@ void connectToDatabase(){
     int main(int argc, char* argv[])
     {
        try{
-          connection C("dbname=testdb user=postgres password=cohondob \
+          connection C("dbname=verein user=manager password=iderfrein \
           hostaddr=127.0.0.1 port=5432");
           if (C.is_open()) {
-             cout << "Opened database successfully: " << C.dbname() << endl;
+             cout << "Verbunden mit der Dantenbank : " << C.dbname() << endl;
           } else {
-             cout << "Can't open database" << endl;
+             cout << "Verbindung war nicht möglich." << endl;
              return 1;
           }
           C.disconnect ();

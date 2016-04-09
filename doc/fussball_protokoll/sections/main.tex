@@ -1,12 +1,15 @@
 %!TEX root=../document.tex
 
+\section{Mein Github-Repository}
+\href{https://github.com/lbreier-tgm/fussball}{\textbf{Hier geht's zu meinem Github - Repository.}}\newline
+Na los, hopp, hopp, worauf wartest du?
 
 \section{Negative Kompetenzen}
-- können komplexe Abfragen für konkrete Problemstellungen entwickeln und optimieren \newline
-- können Anwendungen mit Datenanbindung entwickeln \newline
-- können Anwendungssysteme unter Verwendung von Nebenläufigkeit entwickeln \newline
-- können einfache Schnittstellen zur Kommunikation zwischen Anwendungen entwerfen und implementieren \newline
-- können umfangreiche Client-Server Anwendungen entwickeln \newline
+- k√∂nnen komplexe Abfragen f√∂r konkrete Problemstellungen entwickeln und optimieren \newline
+- k√∂nnen Anwendungen mit Datenanbindung entwickeln \newline
+- k√∂nnen Anwendungssysteme unter Verwendung von Nebenl√∂ufigkeit entwickeln \newline
+- k√∂nnen einfache Schnittstellen zur Kommunikation zwischen Anwendungen entwerfen und implementieren \newline
+- k√∂nnen umfangreiche Client-Server Anwendungen entwickeln \newline
 
 \section{Angabe}
 \includegraphics[scale=0.5]{images/angabe.png}
@@ -17,6 +20,7 @@
 \subsection{Postgres}
 Datenbank, User erzeugen, Rechte verteilen \& Einloggen
 
+\lstset{language=SQL}
 \begin{lstlisting}
 CREATE DATABASE verein;
 CREATE USER manager WITH PASSWORD 'iderfrein';
@@ -24,62 +28,107 @@ GRANT ALL ON DATABASE verein TO manager;
 \end{lstlisting}
 
 Connection :
+\lstset{language=bash}
 \begin{lstlisting}
-psql -d verein -h localhost -U manager
+psql -d verein -h localhost -U manager -W
 \end{lstlisting}
 \section{Aufgaben}
 
 \subsection{CREATE-Befehle}
-Schreiben Sie die nötigen CREATE-Befehle, um die vorgestellten Relationen mittels SQL zu realisieren.
+Schreiben Sie die n√∂tigen CREATE-Befehle, um die vorgestellten Relationen mittels SQL zu realisieren.
 Dabei sind folgende Punkte zu beachten:
 
 \subsubsection{Die Datenbank soll keine NULL-Werte enthalten.}
-Dies lässt sich umsetzen, indem man am Ende des Attributes ein 'NOT NULL' anfügt.\newline
+Dies l√∂sst sich umsetzen, indem man am Ende des Attributes ein 'NOT NULL' anf√∂gt.\newline
 Beispiel:
-\lstinputlisting[language=SQL, firstline=16, lastline=22]{../../sql/create.sql}
+\lstinputlisting[language=SQL, firstline=16, lastline=22]{../sql/create.sql}
 
 \subsubsection{Realisieren Sie folgende Attribute mit fortlaufenden Nummern...}
 ...mit Hilfe von Sequences und Serial: "persnr" von Personen und ''sid'' von Standorten.
 \begin{itemize}
-\item Für das ''persnr'' - Attribut sollen nur gerade, 5-stellige Zahlen vergeben werden (d.h.: 10000, 10002, ..., 99998).\newline
+\item F√∂r das ''persnr'' - Attribut sollen nur gerade, 5-stellige Zahlen vergeben werden (d.h.: 10000, 10002, ..., 99998).\newline
 
-Sequences kann man sich wie eine Zählervariable vorstellen, welche im Hintergrund mitläuft.
+Sequences kann man sich wie eine Z√∂hlervariable vorstellen, welche im Hintergrund mitl√∂uft.
 Erstellt wird unsere Sequence so :
-\lstinputlisting[language=SQL, firstline=5, lastline=5]{../../sql/create.sql}
+\lstinputlisting[language=SQL, firstline=5, lastline=5]{../sql/create.sql}
 
 Die 5 Stellen erhalten wir, indem wir uns an der Option \textbf{START WITH} bedienen.\newline
-Für die geraden Zahlen helfen wir uns mit einem Trick, in dem wir mit Hilfe von \textbf{INCREMET BY} immer um 2 erhöhen.\newline
-=> da er nur immer um 2 erhöht, können nur gerade Zahlen kommen ! \newline
+F√∂r die geraden Zahlen helfen wir uns mit einem Trick, in dem wir mit Hilfe von \textbf{INCREMET BY} immer um 2 erh√∂hen.\newline
+=> da er nur immer um 2 erh√∂ht, k√∂nnen nur gerade Zahlen kommen ! \newline
 
-\item Für das ''sid'' - Attribut sollen beliebige positive Zahlen (d.h. 1,2, ...) vergeben werden.\newline
+\item F√∂r das ''sid'' - Attribut sollen beliebige positive Zahlen (d.h. 1,2, ...) vergeben werden.\newline
 Falls zwischen 2 Tabellen zyklische FOREIGN KEY Beziehungen herrschen,
-dann sind diese FOREIGN KEYs auf eine Weise zu definieren, dass es möglich ist, immer weitere Datensätze mittels INSERT in diese Tabellen einzufügen.\newline
+dann sind diese FOREIGN KEYs auf eine Weise zu definieren, dass es m√∂glich ist, immer weitere Datens√∂tze mittels INSERT in diese Tabellen einzuf√∂gen.\newline
 Die positiven Zahlen erhalten wir mittels einer \textbf{CHECK} - Constraint.\newline
-\lstinputlisting[language=SQL, firstline=68, lastline=68]{../../sql/create.sql}
+\lstinputlisting[language=SQL, firstline=68, lastline=68]{../sql/create.sql}
 
 \end{itemize}
 
 \subsection{INSERT-Befehle}
-Schreiben Sie INSERT-Befehle, um Testdaten für die kreierten Tabellen einzurichten. \newline
+Schreiben Sie INSERT-Befehle, um Testdaten f√∂r die kreierten Tabellen einzurichten. \newline
 Jede Tabelle soll zumindest 10.0000 Zeilen enthalten. \newline
-Sie dürfen die Wahl der Namen, Bezeichnungen, etc. so einfach wie möglich gestalten, d.h.: Sie müssen nicht "real existierende" Fußballer-Namen, Länder, Städte, etc. wählen. \newline
-Stattdessen können Sie ruhig 'Spieler 1', 'Spieler 2', 'Land 1', 'Land 2', 'Stadt 1', 'Stadt 2', etc. verwenden. \newline
-Sie können für die Erstellung der Testdaten auch entsprechende Generatoren verwenden! \newline
-
+Sie d√∂rfen die Wahl der Namen, Bezeichnungen, etc. so einfach wie m√∂glich gestalten, d.h.: Sie m√∂ssen nicht "real existierende" Fu√∂baller-Namen, L√∂nder, St√∂dte, etc. w√∂hlen. \newline
+Stattdessen k√∂nnen Sie ruhig 'Spieler 1', 'Spieler 2', 'Land 1', 'Land 2', 'Stadt 1', 'Stadt 2', etc. verwenden. \newline
+Sie k√∂nnen f√∂r die Erstellung der Testdaten auch entsprechende Generatoren verwenden! \newline
+\textbf{Nicht mein Kompetenzbereich, deshalb erstmal aufgeschoben.}
 
 \subsection{DROP-Befehle}
-Schreiben Sie die nötigen DROP-Befehle, um alle kreierten Datenbankobjekte wieder zu löschen.
+Schreiben Sie die n√∂tigen DROP-Befehle, um alle kreierten Datenbankobjekte wieder zu l√∂schen.
 z.B
-\lstinputlisting[language=SQL, firstline=2, lastline=2]{../../sql/drop.sql}
+\lstinputlisting[language=SQL, firstline=2, lastline=5]{../sql/drop.sql}
+\clearpage
 
-\section{Problemlösungen mittels SQL}
-\subsection{Fanclub-Betreuung}
-Wählen Sie "per Hand" die Personalnummer eines Angestellten aus Ihren Testdaten aus.\newline
-Schreiben Sie eine SQL-Anfrage, die jene Fan-Clubs ermittelt, die dieser Angestellte im Moment nicht betreut.\newline
-Geben Sie zu jedem derartigen Fan-Club die Standort-ID und den Namen des Fan-Clubs aus.\newline
-Bemerkung: Ein Fan-Club wird von einem Angestellten im Moment nicht betreut,\newline
-wenn entweder der Angestellte diesen Fan-Club überhaupt nie betreut hat\newline
-oder wenn das heutige Datum (= sysdate) außerhalb des Betreuungszeitraums liegt.\newline
-Vergessen Sie nicht, jene Fan-Clubs zu berücksichtigen,\newline
-die von überhaupt keinem Angestellten betreut werden (dieser Fall sollte zwar laut Datenmodell nicht vorkommen.\newline
-Die Einhaltung dieser Bedingung wird aber vermutlich vom Datenbanksystem nicht überprüft)!\newline
+\section{Probleml√∂sungen mittels SQL}
+\lstinputlisting[language=SQL, firstline=1]{../sql/aufgaben.sql}
+
+\section{Hier und dazwischen}
+In diesem Kapitel m√∂chte ich auf die Dinge eingehen, welche mich w√§hrend meines Erarbeitens behindert haben.
+
+\subsection{Das Upgrade auf Postgres 9.5}
+H√∂rt sich doch auch einfach an, oder?
+Tja, falsch gedacht.
+Naja zumindest halbwegs.
+Nachdem ich mein Upgrade auf Postgres 9.5 machte, lief die Internet - Verbindung in meiner Virutal Machine einfach nicht mehr.
+Er hat nichtmal die Netzwerkkarte angezeigt. Tote Maus.
+Mit verkrampfter Maushand, welche sich √ºber die letzten Tage entwickelte, wegen dem Kampf-Fehler-Googlen, m√ºssen wir unser Debian-System backupen, und eine neue Distributation installieren.
+Was ich dabei lernte :
+\subsubsection{Backup machen mittels pg\_pgdumapll}
+Um unsere Datenbank von Postgres zu sichern, nutzen wir entweder pg\_dump oder pg\_dumpall.
+Ich nutzte pg\_dumpall, um gleich alle Datenbanken, Nutzer, etc. zu sichern.
+\lstset{language=bash}
+\begin{lstlisting}
+pg_dumpall > verein.out
+\end{lstlisting}
+\subsubsection{aber wie √ºbertrage ich jetzt die File ohne Netzwerkkarte?}
+Der Ausweg bietet ein "Turnschuh"-Netzwerk. (USB - Verbindung)
+Hierbei wiederhole ich mir meine alten Linux - Skills vorallem im Bereich mount.
+Was ich interessant gefunden habe ist, dass bei mount -l nicht alle ungemounteten Datentr√§ger angezeigt werden.
+Wir mussten hierbei auf lsblk ausweichen.
+
+\subsection{Das Upgrade auf El-Capitan}
+Bis heute bereue ich meinen Kauf bei Apple meines Macbooks nicht.
+Doch manchmal k√∂nnte ich wegen Apple derma√üen auszucken, und w√ºrde 
+am Liebsten meinen Laptop aus dem Fenster werfen.
+So musste ich um Qt installieren zu k√∂nnen,
+XCode installieren, und um dies wiederum installieren zu k√∂nnen,
+musste ich die Version meines Macs auf n√§chst-h√∂heren Level bringen.
+Zache G'schicht, ge'?
+Aber das ist noch nicht alles !
+Mein \LaTeX - Programm unter Mac kommt mit der neuen Version leider nicht zu Recht. So habe ich nun meine ganze \LaTeX - Arbeit (Protokoll) auf Debian umlagern m√ºssen.
+Leider habe ich mit diesem Vorgang viel Zeit verloren.
+
+\newpage
+\section{Pl√§doyer und Worte, die ich loswerden will...}
+Auch wenn ich beim Projekt komplett neue Einblicke bekam, vorallem meine Linux --- Kenntnisse aufgefrischt habe, und auch die Freude an \LaTeX  wiederendeckt habe, (ich mein ist dieses Protokoll gestalterisch nicht einfach nur extrem nice?), fand ich es schade, dass wir in der meisten Zeit komplett auf uns allein gestellt waren, und meist nur ein Hint zum Weiterarbeiten gegeben wird.
+Was hier stattfindet ist ganz einfach :
+\textbf{Leidenschaftliche Medientechniker werden zu Skriptkiddies und Systemtechnikern, wie Deutsche Milit√§rkampfhunde umdressiert.}
+Das Verh√§ltnis zwischen Medientechnik und Systemtechnik ist komplett unausgewogenen.
+Obwohl wir doppelt soviele Medientechnikstunden haben wie Systemtechnikstunden, sp√ºre ich bei Medientechnik wenig. (gerade mal Schabasser macht mit uns Projekte)
+Anstatt mich auf meine Leidenschaft fokussieren zu k√∂nnen, muss ich mich bis sp√§t in die Nacht hinein damit herumschlagen, warum bei Qt meine Libary nicht gefunden wird.
+Mit gro√üer Frust und Nerven gehe ich dann zu Bett und blicke mit wahnsinniger Motivation in den n√§chsten Tag. Da kann man schon verstehn, warum wir kontinierliche Zusp√§tkommer haben, oder Schulkollegen eingeraucht in die Schule kommen.
+Nicht weil sie zu m√ºde sind kommen sie zu sp√§t, ganz einfach weil sie diese frustrierte Stimmung mit nach Hause nehmen und dann damit am n√§chsten Tag aufwachen. Eigentlich schade. Ich war damals ja auch noch fasziniert von Pascal, Python und vorallem Linux, daher wei√ü ich was f√ºr ein Erfolgserlebnis man in der IT versp√ºren kann.
+\textbf{Mit dieser Meinung vertrete ich zwar nicht die ganze Klasse, allerdings habe ich von einigen Zustimmung zu dem obrigen Absatz erhalten.}
+\begin{quote}
+	\textbf{'Vater, vergib ihnen, denn sie wissen nicht, was sie tun.'}\linebreak
+	- Lukas, Kapitel 23, Verse 34
+\end{quote}
