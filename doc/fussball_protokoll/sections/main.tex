@@ -117,18 +117,46 @@ Aber das ist noch nicht alles !
 Mein \LaTeX - Programm unter Mac kommt mit der neuen Version leider nicht zu Recht. So habe ich nun meine ganze \LaTeX - Arbeit (Protokoll) auf Debian umlagern müssen.
 Leider habe ich mit diesem Vorgang viel Zeit verloren.
 
+\subsection{Die Libary brauen?}
+Meine Probleme hatte ich auch mit der Libary.
+Tage lange gab mir Qt die Fehlermeldung '<pqxx/pqxx> not found' aus.
+Nach längerem Seufzen und googeln wird meine Frust zu groß und ich breche meine Suche ab.
+Auch Klassenkollegen können mir zu dem Problem nicht weiterhelfen.
+Schlussendlich hilft mir Koll. Dolezal weiter, der mir erzählt, dass man die heruntergeladene Packages
+erst brauen muss und intern installieren muss.
+
+\lstset{language=bash}
+\begin{lstlisting}
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+brew install pqxx
+\end{lstlisting}
+
+Auwählen tue ich aber trotzdem bei Qt 'external libary'?
+Keine Ahnung warum, aber bei 'internal libary' wurde diese nicht erkannt.
+
+
 \newpage
 \section{Plädoyer und Worte, die ich loswerden will...}
-Auch wenn ich beim Projekt komplett neue Einblicke bekam, vorallem meine Linux --- Kenntnisse aufgefrischt habe, und auch die Freude an \LaTeX  wiederendeckt habe, (ich mein ist dieses Protokoll gestalterisch nicht einfach nur extrem nice?), fand ich es schade, dass wir in der meisten Zeit komplett auf uns allein gestellt waren, und meist nur ein Hint zum Weiterarbeiten gegeben wird.
+Auch wenn ich beim Projekt komplett neue Einblicke bekam, vorallem meine Linux --- Kenntnisse aufgefrischt habe, und auch die Freude an \LaTeX  wiederendeckt habe, fand ich es schade, dass wir in der meisten Zeit komplett auf uns allein gestellt waren, und meist nur ein Hint zum Weiterarbeiten gegeben wird. Gerne nehmen sich die Lehrer auch für einen Zeit, ich schätze das auch sehr. Wirklich ! Aber sollten die Aufgaben so gestellt sein, dass ich dann den Lehrern wegen jeder 2. Unklarheit nachrennen muss?
 Was hier stattfindet ist ganz einfach :
+\linebreak
 \textbf{Leidenschaftliche Medientechniker werden zu Skriptkiddies und Systemtechnikern, wie Deutsche Militärkampfhunde umdressiert.}
-Das Verhältnis zwischen Medientechnik und Systemtechnik ist komplett unausgewogenen.
-Obwohl wir doppelt soviele Medientechnikstunden haben wie Systemtechnikstunden, spüre ich bei Medientechnik wenig. (gerade mal Schabasser macht mit uns Projekte)
+
+\textbf{Das Verhältnis zwischen Medientechnik und Systemtechnik ist komplett unausgewogenen.}
+
+Obwohl wir doppelt soviele Medientechnikstunden wie Systemtechnikstunden haben, spüre ich bei Medientechnik wenig. (gerade mal bei Schabasser macht mit uns regelmäßig Projekte)
+
+Im Gegensatz dazu ist Systemtechnik viel spürbarer : 
 Anstatt mich auf meine Leidenschaft fokussieren zu können, muss ich mich bis spät in die Nacht hinein damit herumschlagen, warum bei Qt meine Libary nicht gefunden wird.
-Mit großer Frust und Nerven gehe ich dann zu Bett und blicke mit wahnsinniger Motivation in den nächsten Tag. Da kann man schon verstehn, warum wir kontinierliche Zuspätkommer haben, oder Schulkollegen eingeraucht in die Schule kommen.
+
+Mit großer Frust und Nerven gehe ich dann zu Bett und blicke mit wahnsinniger Motivation in den nächsten Tag. Da kann man schon verstehn, warum wir kontinuierliche Zuspätkommer haben, oder Schulkollegen eingeraucht in die Schule kommen.
 Nicht weil sie zu müde sind kommen sie zu spät, ganz einfach weil sie diese frustrierte Stimmung mit nach Hause nehmen und dann damit am nächsten Tag aufwachen. Eigentlich schade. Ich war damals ja auch noch fasziniert von Pascal, Python und vorallem Linux, daher weiß ich was für ein Erfolgserlebnis man in der IT verspüren kann.
 \textbf{Mit dieser Meinung vertrete ich zwar nicht die ganze Klasse, allerdings habe ich von einigen Zustimmung zu dem obrigen Absatz erhalten.}
+
 \begin{quote}
 	\textbf{'Vater, vergib ihnen, denn sie wissen nicht, was sie tun.'}\linebreak
 	- Lukas, Kapitel 23, Verse 34
 \end{quote}
+
+Und es ist ja nicht so, als ob wir faul wären. Es ist einfach so, dass uns durch diese überforderlichen Aufgaben die Interesse und der Spaß an der Ausbildung vergangen ist.
+Was bringt es, diese Leute zu den besten ITlern zu machen, wenn dass nacher sowieso niemand mehr beruflich machen will, weil die Freude an der Sache vergangen ist.
