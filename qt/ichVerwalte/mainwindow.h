@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "model.h"
 #include <QMainWindow>
 //#include <QtSql>
 //#include <QtSqlDatabase>
@@ -22,6 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Model *m;
 };
 
 #endif // MAINWINDOW_H

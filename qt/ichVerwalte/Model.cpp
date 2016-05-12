@@ -1,15 +1,12 @@
 #include <pqxx/pqxx>
 #include <iostream>
-#include 'Model.h'
+#include "model.h"
 
 using namespace pqxx;
 using namespace std;
 
-Model::Model() {};
-Model::~Model() {};
 
-
-int connectToDatabase(){
+int Model::connectToDatabase(){
     try{
        //Verbindung mit Verein herstellen - Testfunktion zum Verbindung testen.
        connection C("dbname=verein user=manager password=iderfrein\
@@ -29,7 +26,7 @@ int connectToDatabase(){
 }
 
 
-int updateDatabase(){
+int Model::showData(){
     string sql;
     connection C("dbname=verein user=manager password=iderfrein\
     hostaddr=127.0.0.1 port=5432");
@@ -65,4 +62,38 @@ int updateDatabase(){
         cerr << e.what() << std::endl;
     return 1;
     }
+return 0;
+}
+
+int Model::updateCell(string newValue, string tn, string cn, string v, string sv, string sc){
+    string wr = newValue;
+    string table_name = tn;
+    string column = cn;
+    string value = v;
+    string some_value = sv;
+    string some_column = sc;
+    string sql;
+    //Verbindung
+    connection C("dbname=verein user=manager password=iderfrein\
+    hostaddr=127.0.0.1 port=5432");
+    try{
+       if (C.is_open()) {
+          cout << "Opened database successfully: " << C.dbname() << endl;
+       } else {
+          cout << "Can't open database" << endl;
+          return 1;
+       }
+    /* UPDATE - SQL Befehl */
+    sql = "UPDATE " + table_name + " SET " + column + "=" + value + " WHERE " + some_column + "=" + some_value;
+
+    nontransaction N(C);
+
+    /* Ausfuehren des SQL - Update Befehls */
+    result R( N.exec( sql ));
+
+    } catch (const std::exception &e){
+        cerr << e.what() << std::endl;
+    return 1;
+    }
+            return 0;
 }
