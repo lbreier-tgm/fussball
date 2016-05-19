@@ -3,8 +3,10 @@
 
 #include "model.h"
 #include <QMainWindow>
+#include <QTableView>
 //#include <QtSql>
 //#include <QtSqlDatabase>
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +22,7 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
 
 private:
     Ui::MainWindow *ui;

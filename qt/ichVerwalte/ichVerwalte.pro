@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,3 +30,4 @@ else:unix: LIBS += -L$$PWD/../../../../../usr/local/Cellar/libpqxx/4.0.1/lib/ -l
 
 INCLUDEPATH += $$PWD/../../../../../usr/local/Cellar/libpqxx/4.0.1/include
 DEPENDPATH += $$PWD/../../../../../usr/local/Cellar/libpqxx/4.0.1/include
+
