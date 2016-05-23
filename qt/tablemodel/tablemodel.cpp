@@ -66,20 +66,19 @@ void initializeModel(QSqlTableModel *model)
 {
     model->setTable("person");
     model->setEditStrategy(QSqlTableModel::OnRowChange);
-    model->setTable(connectionWidget->currentDatabase().driver()->escapeIdentifier(t, QSqlDriver::TableName));
-	model->select();
-
+    model->select();
+    model->sort(0, Qt::SortOrder(0));
 
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
 	model->setHeaderData(1, Qt::Horizontal, QObject::tr("First name"));
 	model->setHeaderData(2, Qt::Horizontal, QObject::tr("Last name"));
 }
 
-QTableView *createView(QSqlTableModel *model, const QString &title = "")
+QTableView *createView(QSqlTableModel *model, const QString &title = "fussball database connector")
 {
 	QTableView *view = new QTableView;
-	view->setModel(model);
-	view->setWindowTitle(title);
+    view->setModel(model);
+    view->setWindowTitle(title);
 	return view;
 }
 
@@ -93,7 +92,7 @@ int main(int argc, char *argv[])
 
 	initializeModel(&model);
 
-	QTableView *view1 = createView(&model, QObject::tr("Table Model (View 1)"));
+    QTableView *view1 = createView(&model, QObject::tr("fussball database connector"));
 
 	view1->show();
 
